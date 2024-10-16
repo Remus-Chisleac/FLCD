@@ -15,8 +15,9 @@ described in `EBNF` from.
       - Key/Reserved words:
         - **type**: `Bool`, `Number`, `Char`, `String`, `Array`, `Any`;
         - **constants**: `true`, `false`;
-        - **loops**: `onEach`, `onEachReverse`, `onRange`, `onRangeReverse`, `next`;
+        - **loops**: `onEach`, `onEachReverse`, `next`;
         - **conditionals**: `probe`, `otherwise`, `otherwise probe`;
+        - **functions**: `fn`, `trigger`, `trigger-end`, `#[EntryPoint]`
     - Identifiers:
         - a sequence of letters, digits, `_` and `-` that starts with a letter:
         ```EBNF
@@ -26,45 +27,13 @@ described in `EBNF` from.
         word_separator = "_" | "-" ;
         ```
     - Constants:
-        - **Boolean**: `true`, `false`;
+        - **Bool**: `true`, `false`;
         - **Number**: a sequence of digits;
         - **Char**: a single character;
-        - **String**: a sequence of characters starts with **"** and ends with **"**;
-        - **Array**: a collection of elements;
+        - **String**: a sequence of characters that starts with **"** and ends with **"**;
         ```EBNF
         bool = true | false ;
-        number = digit { digit } ;
+        number = ["+"|"-"] digit { digit } ;
         char = "'" letter | digit "'" ;
         string = '"' { char } '"' ;
-        array = "[" type "," { constant [","] } "]" ;
-        type = "Bool" | "Number" | "Char" | "String" | "Array";
-        constant = bool | number | char | string | array ;
         ```
-
-### DataTypes:
-- **Boolean**: A value that can be either `true` or `false`.
-    | constant | variable    |
-    | -------- | ----------- |
-    | true     | Bool(true)  |
-    | false    | Bool(false) |
-- **Number**: A sequence of digits.
-    | constant | variable    |
-    | -------- | ----------- |
-    | 123      | Number(123) |
-- **Char**: A single character.
-    | constant | variable  |
-    | -------- | --------- |
-    | 'a'      | Char('a') |
-    | '1'      | Char('1') |
-    | ' '      | Char(' ') |
-- **String**: A sequence of characters starts with **"** and ends with **"**.
-    | constant | variable        |
-    | -------- | --------------- |
-    | "Hello"  | String("Hello") |
-- **Array**: A collection of elements.
-    | constant       | variable                                         |
-    | -------------- | ------------------------------------------------ |
-    | [1, 2]         | Array(Number, [1, 2])                            |
-    | ['a', 'b']     | Array(Char, ['a', 'b'])                          |
-    | [1,'a',"test"] | Array(Any, [Number(1),Char('a'),String("test")]) |
-  
