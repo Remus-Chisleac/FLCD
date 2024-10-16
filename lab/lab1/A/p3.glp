@@ -1,0 +1,45 @@
+@["EntryPoint"]
+main : fn()
+{
+    alloc list : List(Number, [1,2,3,4,5]);
+
+    alloc min, max : Number(); ~~ default value for type Number ~~
+
+    onEach(list, fn(n, i)
+    {
+        probe(i $eq 0)
+        {
+            min : n;
+            max : n;
+            next;
+        }
+
+        probe(min $less n)
+        {
+            min : n;
+        }
+        otherwise probe(max $less n)
+        {
+            max : n;
+        }
+    });
+
+    $console.push("List: ");
+    onEach(list, fn(n, i)
+    {
+        $console.push(n);
+        $console.push(", ");
+    });
+    $console.cr;
+
+    $console.push("min: ");
+    $console.push(min);
+    $console.cr;
+
+    $console.push("max: ");
+    $console.push(max);
+    $console.cr;
+
+
+    trigger $end(0);
+}

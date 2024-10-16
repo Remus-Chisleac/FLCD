@@ -1,0 +1,49 @@
+@["EntryPoint"]
+main : fn()
+{
+    alloc a : Number(1);
+    alloc b : Number(2);
+    alloc c : Number(3);
+
+    alloc min, max : Number();
+
+    probe(a $ls b)
+    {
+        min : a;
+        max : b;
+    }
+    otherwise
+    {
+        min : b;
+        max : a;
+    }
+
+    probe(min $gt c)
+    {
+        min : c;
+    }
+
+    probe(max $ls c)
+    {
+        max : c;
+    }
+
+
+    $console.push(a);
+    $console.push(", ");
+    $console.push(b);
+    $console.push(", ");
+    $console.push(c);
+    $console.cr;
+
+    $console.push("min: ");
+    $console.push(min);
+    $console.cr;
+
+    $console.push("max: ");
+    $console.push(max);
+    $console.cr;
+
+
+    trigger $end(0);
+}

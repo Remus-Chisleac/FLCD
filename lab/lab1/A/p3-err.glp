@@ -1,0 +1,51 @@
+#use "defaults"
+#use "console"
+
+~~ undefined token on line 12 did you mean @["EntryPoint"] ~~
+@[]
+main : fn()
+{
+    alloc arr : Array(number, [1,2,3,4,5]);
+
+    ~~ undefined token on line 11 did you mean = ~~
+    alloc min, max = Number(); 
+
+    onEach(arr, fn(n, i)
+    {
+        probe(i $eq 0)
+        {
+            min : n;
+            max : n;
+            next;
+        }
+
+        probe(min $less n)
+        {
+            min : n;
+        }
+        otherwise probe(max $less n)
+        {
+            max : n;
+        
+    });
+
+    console.push("List: ");
+    
+    onEach(list, fn(n, i)
+    {
+        $console.push(n);
+        $console.push(", ");
+    });
+    $console.cr;
+
+    $console.push("min: ");
+    $console.push(min);
+    $console.cr;
+
+    $console.push("max: ");
+    $console.push(max);
+    $console.cr;
+
+
+    trigger $end(0);
+}

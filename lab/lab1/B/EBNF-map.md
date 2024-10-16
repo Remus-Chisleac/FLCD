@@ -1,0 +1,8 @@
+- {} - repetition 0 or more times
+- [] - optional
+- () - grouping
+- | - or
+- (* *) - comments
+- ; - rule separator
+- " " | ' ' - terminals
+- = - definition

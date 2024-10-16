@@ -1,0 +1,14 @@
+@["EntryPoint"]
+main : fn()
+{
+    alloc string : String("em trever");
+
+    $console.push("String: ");
+    onEachRevers(string, fn(n, i)
+    {
+        $console.push(n);
+    });
+    $console.cr;
+
+    trigger $end(0);
+}
