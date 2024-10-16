@@ -1,4 +1,4 @@
-@["EntryPoint"]
+@[EntryPoint]
 main : fn()
 {
     alloc a : Number(1);
