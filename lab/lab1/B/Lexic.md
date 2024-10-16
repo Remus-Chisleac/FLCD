@@ -11,13 +11,15 @@ described in `EBNF` from.
       - Operators:
         - `+`, `-`, `*`, `/`,`:`, `$eq`, `$ne`, `$lt`, `$gt`, `$le`, `$ge`, `$and`, `$or`;
       - Separators:
-        - `()`, `[]`, `{}`, `;`,` `(space); 
+        - `()`, `[]`, `{}`, `;`, `,`,` `(space); 
       - Key/Reserved words:
-        - **type**: `Bool`, `Number`, `Char`, `String`, `Array`, `Any`;
+        - **assignments**: `alloc`;
+        - **types**: `Bool`, `Number`, `Char`, `String`, `Array`, `Any`;
         - **constants**: `true`, `false`;
         - **loops**: `onEach`, `onEachReverse`, `next`;
-        - **conditionals**: `probe`, `otherwise`, `otherwise probe`;
+        - **conditionals**: `probe`, `otherwise`;
         - **functions**: `fn`, `trigger`, `trigger-end`, `#[EntryPoint]`
+        - **IO**: `console`;
     - Identifiers:
         - a sequence of letters, digits, `_` and `-` that starts with a letter:
         ```EBNF
